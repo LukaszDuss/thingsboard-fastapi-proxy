@@ -93,10 +93,10 @@ Automatically applied to all responses:
 
 ### API Key Generation
 ```bash
-# Generate secure API key
-python -c "import secrets; print(secrets.token_urlsafe(32))"
+# Generate secure API key for your .env file
+python -c "import secrets; print('API_KEY=' + secrets.token_urlsafe(32))"
 
-# Or using openssl
+# Or using openssl (add API_KEY= prefix manually)
 openssl rand -base64 32
 ```
 
@@ -160,7 +160,7 @@ curl -I -H "X-API-Key: your-key" \
 ### If API Key is Compromised:
 1. **Immediately generate new API key**:
    ```bash
-   python -c "import secrets; print(secrets.token_urlsafe(32))"
+   python -c "import secrets; print('API_KEY=' + secrets.token_urlsafe(32))"
    ```
 2. **Update environment variables**
 3. **Restart the application**

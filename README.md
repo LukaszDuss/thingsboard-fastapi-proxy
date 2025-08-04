@@ -64,9 +64,10 @@ cp env_sample .env
 vim .env   # Configure TB_HOST, credentials, API_KEY, etc.
 ```
 
-**Critical**: Generate a secure API key:
+**Critical**: Generate a secure API key for `API_KEY` in your `.env` file:
 ```bash
-python -c "import secrets; print(secrets.token_urlsafe(32))"
+# Generate the key (copy the output to your .env file)
+python -c "import secrets; print('API_KEY=' + secrets.token_urlsafe(32))"
 ```
 
 ### 2. Test Connection
@@ -180,7 +181,7 @@ When exceeded:
 ## 🛡️ Production Security Checklist
 
 - [ ] **HTTPS Only**: Set `TB_HOST=https://...`
-- [ ] **Strong API Key**: 32+ characters, random generation
+- [ ] **Strong API Key**: Use `secrets.token_urlsafe(32)` - generates 43-character cryptographically secure key
 - [ ] **Debug Off**: `DEBUG=false` in production
 - [ ] **CORS**: Configure specific `BACKEND_CORS_ORIGINS`
 - [ ] **Trusted Hosts**: Set `ALLOWED_HOSTS` for your domain
@@ -248,8 +249,12 @@ vim .env   # edit TB_HOST, credentials, API_KEY, CORS list …
 cp env_sample .env
 vim .env
 
-# 2. Generate secure API key
-python -c "import secrets; print(secrets.token_urlsafe(32))" >> .env
+# 2. Generate and set secure API key
+echo "Generated API key (copy to your .env file):"
+python -c "import secrets; print('API_KEY=' + secrets.token_urlsafe(32))"
+
+# 2.1. Verify your API key is properly set (should be 43+ characters)
+grep "API_KEY=" .env
 
 # 3. Install dependencies  
 pip install -r requirements.txt
