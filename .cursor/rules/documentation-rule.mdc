@@ -1,0 +1,78 @@
+description:
+USE WHEN creating, modifying, or deleting Python modules, classes, or public functions.
+
+The goals of this rule are two-fold:
+1. Maintain an accurate list of features in `README.md`.
+2. Enforce consistent, PEP-8/Numpydoc-style documentation in code.
+
+──────────────────────────────────────────────────────────────────────────────
+1️⃣  README MAINTENANCE
+──────────────────────────────────────────────────────────────────────────────
+• After **any** code change that adds, removes, or alters behaviour, update `README.md`.
+• Add a concise bullet to the **"## Features"** section (create it if missing) with:
+  – Feature name (class / function / module)
+  – One-sentence purpose
+  – File path in back-ticks, e.g. `src/foo.py`.
+• Remove or update bullets when functionality is removed or renamed.
+
+──────────────────────────────────────────────────────────────────────────────
+2️⃣  PEP-8 COMPLIANT DOCSTRINGS
+──────────────────────────────────────────────────────────────────────────────
+• Every **public** class, function, and method **MUST** include a docstring that follows PEP-257 & Numpydoc.
+• Suggested structure:
+
+```python
+"""One-line summary.
+
+Extended description (optional).
+
+Parameters
+----------
+param1 : type
+    Description.
+param2 : type, optional
+    Description; default is …
+
+Returns
+-------
+return_type
+    Description.
+
+Raises
+------
+ErrorType
+    Condition.
+"""
+```
+• Class docstrings list **Attributes** instead of Parameters/Returns.
+• Reject or request fixes for code lacking proper docstrings.
+
+──────────────────────────────────────────────────────────────────────────────
+EXAMPLES
+──────────────────────────────────────────────────────────────────────────────
+```python
+class Foo:
+    """Foo handles frobnication.
+
+    Attributes
+    ----------
+    bar : int
+        Level of frobnication.
+    """
+```
+
+README entry example:
+```
+## Features
+- Foo class: frobnication utilities (`src/foo.py`)
+```
+
+──────────────────────────────────────────────────────────────────────────────
+FOLLOW THE ABOVE WHENEVER THIS RULE IS ATTACHED.
+
+globs:
+
+```
+
+──────────────────────────────────────────────────────────────────────────────
+FOLLOW THE ABOVE WHENEVER THIS RULE IS ATTACHED.

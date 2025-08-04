@@ -1,0 +1,17 @@
+# Core API dependencies
+fastapi==0.108.0
+uvicorn[standard]==0.25.0
+httpx==0.26.0
+python-jose[cryptography]==3.3.0
+pydantic==2.5.3
+pydantic-settings==2.1.0
+python-multipart==0.0.6
+
+# Excel support (optional)
+pandas==2.1.4
+xlsxwriter==3.2.0
+
+# Testing dependencies
+pytest==7.4.4
+pytest-asyncio==0.23.2
+pytest-mock==3.12.0 
